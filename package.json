@@ -1,0 +1,24 @@
+{
+	"name": "content-security-tester",
+	"description": "GitHub Actions for testing Content Security Policy (CSP)",
+	"author": "Anantachai Saothong",
+	"license": "MIT",
+	"type": "module",
+	"engines": {
+		"node": ">=20.0.0"
+	},
+	"scripts": {
+		"build": "rm -r dist/* && esbuild main/index.ts --bundle --minify-whitespace --platform=node --target=node20 --format=esm --outdir=dist",
+		"test": "tsc && vitest --root main --coverage --coverage.thresholds.100 --coverage.reporter none --coverage.exclude index.ts"
+	},
+	"devDependencies": {
+		"@actions/core": "^1.11.1",
+		"@types/node": "^20.17.32",
+		"@vitest/coverage-v8": "^3.1.2",
+		"cheerio": "^1.0.0",
+		"esbuild": "^0.25.3",
+		"lefthook": "^1.11.12",
+		"typescript": "^5.8.3",
+		"vitest": "^3.1.2"
+	}
+}

@@ -1,0 +1,14 @@
+name: Content Security Tester
+description: Test if the given HTML is compliant with the given content security policy
+
+inputs:
+	html:
+		description: 'The URL to the HTML or the content itself'
+		required: true
+	policy:
+		description: 'The URL which has Content-Security-Policy response header or the policy itself'
+		required: true
+
+runs:
+	using: node20
+	main: dist/index.js
