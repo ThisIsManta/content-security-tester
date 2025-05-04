@@ -1,3 +1,4 @@
+import * as fs from 'fs/promises'
 
 import core from '@actions/core'
 import * as cheerio from 'cheerio'
@@ -6,7 +7,11 @@ import { transformDirectives } from './transformDirectives.ts'
 import { checkScript } from './checkScript.ts'
 
 const html = await (async () => {
-	const htmlOrURL = core.getInput('html', { trimWhitespace: false })
+	const htmlOrURL = core.getInput('html')
+
+	if (/\.{0,2}\//.test(htmlOrURL)) {
+		return fs.readFile(htmlOrURL, 'utf-8')
+	}
 
 	if (URL.canParse(htmlOrURL)) {
 		const response = await fetch(htmlOrURL, { method: 'GET' })
@@ -20,7 +25,7 @@ const html = await (async () => {
 })()
 
 const policy = await (async () => {
-	const policyOrURL = core.getInput('policy', { trimWhitespace: true })
+	const policyOrURL = core.getInput('policy')
 
 	if (URL.canParse(policyOrURL)) {
 		const response = await fetch(policyOrURL, {
