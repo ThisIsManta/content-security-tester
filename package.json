@@ -3,12 +3,11 @@
 	"description": "GitHub Actions for testing Content Security Policy (CSP)",
 	"author": "Anantachai Saothong",
 	"license": "MIT",
-	"type": "module",
 	"engines": {
 		"node": ">=20.0.0"
 	},
 	"scripts": {
-		"build": "rm -r dist/* && esbuild main/index.ts --bundle --minify-whitespace --platform=node --target=node20 --format=esm --outdir=dist",
+		"build": "rm -rf dist/* && esbuild main/index.ts --bundle --platform=node --target=node20 --format=cjs --outdir=dist",
 		"test": "tsc && vitest --root main --coverage --coverage.thresholds.100 --coverage.reporter none --coverage.exclude index.ts"
 	},
 	"devDependencies": {

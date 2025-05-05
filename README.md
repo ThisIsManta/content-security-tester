@@ -14,11 +14,16 @@ with:
   policy: "script-src 'sha256-ex2O7MWOzfczthhKm6azheryNVoERSFrPrdvxRtP8DI='"
 ```
 
-Alternatively, a URL can be specified to retrieve the HTML content and/or Content-Security-Policy response header.
+```yml
+uses: thisismanta/content-security-tester@master
+with:
+  html: ${{ github.workspace }}/index.html
+  policy: https://content-security-policy.com
+```
 
 ```yml
 uses: thisismanta/content-security-tester@master
 with:
-  html: https://content-security-policy.com
+  html: https://content-security-policy.com/index.html
   policy: https://content-security-policy.com
 ```

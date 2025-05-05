@@ -1,13 +1,11 @@
 import { vi, it, expect, afterEach } from 'vitest'
-import core from '@actions/core'
+import * as core from '@actions/core'
 import * as cheerio from 'cheerio'
 
 import { checkScript } from '../main/checkScript.ts'
 
 vi.mock('@actions/core', () => ({
-	default: {
-		setFailed: vi.fn()
-	}
+	setFailed: vi.fn()
 }))
 
 afterEach(() => {

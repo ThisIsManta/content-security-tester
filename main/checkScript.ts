@@ -1,4 +1,4 @@
-import core from '@actions/core'
+import * as core from '@actions/core'
 import * as cheerio from 'cheerio'
 
 import { sha256 } from './sha256.ts'
