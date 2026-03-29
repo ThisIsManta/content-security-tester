@@ -4,20 +4,20 @@
 	"author": "Anantachai Saothong",
 	"license": "MIT",
 	"engines": {
-		"node": ">=20.0.0"
+		"node": ">=24.0.0"
 	},
 	"scripts": {
-		"build": "rm -rf dist/* && esbuild main/index.ts --bundle --platform=node --target=node20 --format=cjs --outdir=dist",
-		"test": "tsc && vitest --root main --coverage --coverage.thresholds.100 --coverage.reporter none --coverage.exclude index.ts"
+		"build": "rm -rf dist/* && esbuild main/index.ts --bundle --platform=node --target=node24 --format=cjs --outdir=dist",
+		"test": "tsc && vitest --root main --coverage --coverage.thresholds.statements 100 --coverage.reporter text --coverage.exclude index.ts"
 	},
 	"devDependencies": {
-		"@actions/core": "^1.11.1",
-		"@types/node": "^20.17.32",
-		"@vitest/coverage-v8": "^3.1.2",
-		"cheerio": "^1.0.0",
-		"esbuild": "^0.25.3",
-		"lefthook": "^1.11.12",
-		"typescript": "^5.8.3",
-		"vitest": "^3.1.2"
+		"@actions/core": "^3.0.0",
+		"@types/node": "~24.12.0",
+		"@vitest/coverage-v8": "^4.1.2",
+		"cheerio": "^1.2.0",
+		"esbuild": "^0.27.4",
+		"lefthook": "^2.1.4",
+		"typescript": "^6.0.2",
+		"vitest": "^4.1.2"
 	}
 }
