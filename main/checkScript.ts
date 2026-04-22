@@ -50,6 +50,10 @@ export function checkScript(
 		}
 
 		if (directives['script-src'].includes('unsafe-inline')) {
+			if (directives['script-src'].some(value => value.startsWith('sha256-'))) {
+				core.setFailed(`Unexpected 'unsafe-inline' under script-src directive because modern browsers will ignore it when a nonce is present.`)
+			}
+
 			continue
 		}
 

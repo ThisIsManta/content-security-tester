@@ -151,6 +151,20 @@ it('does not fail, given no unsafe-inline but hash', () => {
 	expect(core.setFailed).not.toHaveBeenCalled()
 })
 
+it('fails, given both unsafe-inline and hash', () => {
+	checkScript(cheerio.load(`
+		<html>
+			<body>
+				<script>console.log("hello!");</script>
+			</body>
+		</html>
+	`), {
+		'script-src': ['unsafe-inline', 'sha256-ex2O7MWOzfczthhKm6azheryNVoERSFrPrdvxRtP8DI=']
+	})
+
+	expect(core.setFailed).toHaveBeenCalledWith("Unexpected 'unsafe-inline' under script-src directive because modern browsers will ignore it when a nonce is present.")
+})
+
 it('fails, given no unsafe-inline and no hash', () => {
 	checkScript(cheerio.load(`
 		<html>
