@@ -3,18 +3,20 @@
 	"description": "GitHub Actions for testing Content Security Policy (CSP)",
 	"author": "Anantachai Saothong",
 	"license": "MIT",
+	"type": "module",
 	"engines": {
 		"node": ">=24.0.0"
 	},
 	"scripts": {
-		"build": "rolldown main/index.ts --clean-dir --file=dist/index.js --format=cjs --platform=node --transform.target=node24",
-		"test": "tsc && vitest --root main --coverage --coverage.thresholds.statements 100 --coverage.reporter text --coverage.exclude index.ts"
+		"build": "tsc && rolldown main/index.ts --clean-dir --file=dist/index.js --format=esm --platform=node --transform.target=node24",
+		"test": "vitest --root main --coverage --coverage.thresholds.statements 100 --coverage.reporter text"
 	},
 	"devDependencies": {
 		"@actions/core": "^3.0.0",
 		"@types/node": "~24.12.2",
 		"@vitest/coverage-v8": "^4.1.4",
 		"cheerio": "^1.2.0",
+		"es-toolkit": "^1.45.1",
 		"lefthook": "^2.1.6",
 		"rolldown": "*",
 		"typescript": "^6.0.3",

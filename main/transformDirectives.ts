@@ -18,6 +18,6 @@ export function transformDirectives(policy: string | undefined | null): { [direc
 				.split(/ +/)
 				.map((value) => value.replace(/^'/, '').replace(/'$/, ''))
 			return [directive, values]
-		})
+		}).filter(entry => !!entry[0])
 	)
 }
